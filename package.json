@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "AngularJS Webpack",
   "scripts": {
-    "dev": "webpack-dev-server --content-base ./src --progress --history-api-fallback --open"
+    "start": "webpack-dev-server --content-base ./src --progress --history-api-fallback --open"
   },
   "author": "",
   "license": "MIT",
