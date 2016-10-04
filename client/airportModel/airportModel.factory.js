@@ -2,9 +2,9 @@
     'use strict';
     angular.module('main').factory('airportModelFactory', airportModelFactory);
 
-    airportModelFactory.$inject = ['airportsRawData'];
+    airportModelFactory.$inject = ['airportsRawData', 'dispatcher'];
 
-    function airportModelFactory(airportsRawData) {
+    function airportModelFactory(airportsRawData, dispatcher) {
 
         console.log('airportModelFactory', airportsRawData);
         return {
@@ -12,7 +12,9 @@
         };
 
         function newInstance(airport) {
-
+            dispatcher.subscribe(function (event) {
+               console.log('airport model!', event);
+            });
 
             return airport;
         }
