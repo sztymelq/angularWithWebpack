@@ -1,4 +1,4 @@
-(function (global) {
+(function () {
     'use strict';
 
     angular.module('main').component('flightsSearch', {
@@ -11,4 +11,4 @@
         console.log('flightsSearchCtrl');
     }
 
-})(this);
+})();
