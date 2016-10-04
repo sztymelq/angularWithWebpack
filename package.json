@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "AngularJS Webpack",
   "scripts": {
-    "start": "webpack-dev-server --content-base ./src --progress --history-api-fallback --open"
+    "start": "webpack-dev-server --content-base ./client --progress --history-api-fallback --open"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "json-loader": "^0.5.4",
     "webpack": "^2.1.0-beta.21",
     "webpack-dev-server": "^2.1.0-beta.2"
   },

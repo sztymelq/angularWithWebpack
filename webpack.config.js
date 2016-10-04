@@ -1,5 +1,5 @@
 const config = {
-    entry: './src/index',
+    entry: './client/index',
     output: {
         filename: 'bundle.js'
     }

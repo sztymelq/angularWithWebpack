@@ -2,15 +2,21 @@ const fs = require('fs');
 const airportsData = require('./airportsData');
 const airportModels = {};
 
-airportsData.forEach((airport) => {
-    airport.flights = generateRandomFlights();
-    airportModels[airport.city] = airport;
-});
+generate();
+
+function generate() {
+    let index = 0;
+    airportsData.forEach((airport) => {
+        airport.departures = generateRandomFlights();
+        airport.index = index++;
+
+        airportModels[airport.city] = airport;
+    });
 
 
-console.log(JSON.stringify(airportModels));
-fs.writeFile('airports.json', JSON.stringify(airportModels, null, 4));
-
+    console.log(JSON.stringify(airportModels));
+    fs.writeFile('airports.json', JSON.stringify(airportModels, null, 4));
+}
 
 function generateRandomFlights() {
     const maxFlightsQuantity = 10;
@@ -21,11 +27,11 @@ function generateRandomFlights() {
 }
 
 function generateFlight() {
-    const randomArrivalDate = randomDateFromRange(new Date(), new Date(2018, 1, 1));
+    const randomArrivalDate = randomDateFromRange(new Date(), new Date(2017, 1, 1));
     const randomFlightLength = randomInt(24);
 
     return {
-        destinationName: pickRandomCity(airportsData).CapitalName,
+        destination: pickRandomCity(airportsData).city,
         arrivalDate: randomArrivalDate,
         departureDate: computeDepartureDate(randomArrivalDate, randomFlightLength)
     }
