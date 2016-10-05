@@ -1,26 +1,23 @@
-(function () {
-    'use strict';
+'use strict';
+flightsSearchCtrl.$inject = ['dispatcher', 'airportModels'];
 
-    angular.module('main').component('flightsSearch', {
-            bindings: {},
-            templateUrl: 'components/flightsSearch/flightsSearch.html',
-            controller: flightsSearchCtrl
-        });
+const flightsSearchComponent = {
+    bindings: {},
+    templateUrl: 'components/flightsSearch/flightsSearch.html',
+    controller: flightsSearchCtrl
+};
 
-    flightsSearchCtrl.$inject = ['dispatcher', 'airportModelFactory'];
-
-    function flightsSearchCtrl(dispatcher, airportModelFactory) {
-        const that = this;
-        that.search = search;
-
-        const airportModel = airportModelFactory.newInstance();
+export default flightsSearchComponent;
 
 
-        function search() {
-            console.log('search!');
+function flightsSearchCtrl(dispatcher, airportModels) {
+    const that = this;
+    that.airportModels = airportModels.airports;
+    that.search = search;
+    that.isResultVisible = true;
 
-            dispatcher.notify('elo', {siema: 1234});
-        }
+    function search() {
+        console.log('airportModels.airports', airportModels.airports);
+        that.isResultVisible = !that.isResultVisible;
     }
-
-})();
+}

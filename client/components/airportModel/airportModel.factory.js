@@ -1,23 +1,18 @@
-(function (global) {
-    'use strict';
-    angular.module('main').factory('airportModelFactory', airportModelFactory);
+'use strict';
+airportModelFactory.$inject = ['dispatcher'];
 
-    airportModelFactory.$inject = ['airportsRawData', 'dispatcher'];
+export default airportModelFactory;
 
-    function airportModelFactory(airportsRawData, dispatcher) {
+function airportModelFactory(dispatcher) {
+    return {
+        newInstance
+    };
 
-        console.log('airportModelFactory', airportsRawData);
-        return {
-            newInstance
-        };
+    function newInstance(airport) {
+        dispatcher.subscribe(function (event) {
+            console.log('airport model!', event);
+        });
 
-        function newInstance(airport) {
-            dispatcher.subscribe(function (event) {
-               console.log('airport model!', event);
-            });
-
-            return airport;
-        }
+        return airport;
     }
-
-})(this);
+}

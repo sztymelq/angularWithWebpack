@@ -1,2 +1,9 @@
-div {
+.flights-results-container.ng-enter {
+    transition: 1s linear all;
+    opacity: 0;
+}
+
+.flights-results-container.ng-enter.ng-enter-active {
+    transition: 1s linear all;
+    opacity: 1;
 }

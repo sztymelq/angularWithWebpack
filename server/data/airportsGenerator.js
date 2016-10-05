@@ -29,11 +29,13 @@ function generateRandomFlights() {
 function generateFlight() {
     const randomArrivalDate = randomDateFromRange(new Date(), new Date(2017, 1, 1));
     const randomFlightLength = randomInt(24);
+    const randomPrice = randomInt(10000);
 
     return {
         destination: pickRandomCity(airportsData).city,
         arrivalDate: randomArrivalDate,
-        departureDate: computeDepartureDate(randomArrivalDate, randomFlightLength)
+        departureDate: computeDepartureDate(randomArrivalDate, randomFlightLength),
+        price: randomPrice
     }
 }
 
